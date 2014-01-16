@@ -1,0 +1,8 @@
+    <div class="option-combo filter">
+            <h2>Filter:</h2>
+            <ul class="option-set clearfix" data-option-key="filter">
+                    {{#each .}}
+                            <li><a data-filter-value="{{value}}" class="{{value}}">{{label}}</a></li>
+                    {{/each}}
+            </ul>
+    </div>

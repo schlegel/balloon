@@ -1,0 +1,554 @@
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+.isotope-item {
+	z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+.isotope,.isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-ms-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-ms-transition-property: height, width;
+	-o-transition-property: height, width;
+	transition-property: height, width;
+}
+
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform, opacity;
+	-ms-transition-property: -ms-transform, opacity;
+	-o-transition-property: -o-transform, opacity;
+	transition-property: transform, opacity;
+}
+
+/**** Isotope filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,.isotope.no-transition .isotope-item,.isotope .isotope-item.no-transition
+	{
+	-webkit-transition-duration: 0s;
+	-moz-transition-duration: 0s;
+	-ms-transition-duration: 0s;
+	-o-transition-duration: 0s;
+	transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+/**** Base styles ****/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+	{
+	display: block;
+}
+
+body {
+	padding: 20px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Arial, sans-serif;
+	font-size: 13px;
+	line-height: 1.7em;
+	background: #fbfbfb;
+	color: #FFF;
+	overflow: auto;
+}
+
+h1,h2,h3,p,ul,ol,pre,dl {
+	margin-bottom: 1.0em;
+}
+
+h1,h2,#super-list,.item,.tagline,#index-list,.super-list .link {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1,h2,h3 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 32px;
+	line-height: 1.1em;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 1.1em;
+}
+
+ul,ol {
+	margin-left: 1.5em;
+}
+
+a,a code {
+	color: #FB4;
+	text-decoration: none;
+}
+
+a:hover,a:hover code {
+	color: #4BF;
+}
+
+a:active,a:active code {
+	color: #1FB;
+	background: black;
+}
+
+a img {
+	border: none;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+blockquote {
+	border-left: 1px solid #333;
+	font-style: italic;
+}
+
+label {
+	color: 		#222;
+}
+
+/**** Isotope styles ****/
+
+/* required for containers to inherit vertical size from window */
+html,body {
+	height: 100%;
+}
+
+.outerContainer {
+	width: 96%;
+	left: 2%;
+	margin-bottom: 20px;
+	margin-top: 70px;
+	background: #f3f3f3;
+	position:   relative;
+}
+
+.loading {
+	text-align: right;
+	color: 		#222;
+    position:   relative;
+    border-bottom: 1px dotted #666;
+    border-top: 1px dotted #666;
+    visibility:	hidden;
+    top:        0;
+    left:       0;
+    height:     20px;
+    width:      100%;
+    background:	#f9f9f9
+    			url('../img/loading.gif')
+    			50% 50%
+                no-repeat;
+}
+
+/**** Preview ****/
+.preview {
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	z-index: -1;
+	pointer-events: none;
+	cursor: default;
+}
+
+.previewContent {
+	left: 25%;
+	top: 25%;
+	position: relative;
+	width: 50%;
+	height: 50%;
+}
+
+/**** Overlay ****/
+.overlay {
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	z-index: -1;
+	pointer-events: none;
+	cursor: default;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 0.4em;
+    right: 1.0em;
+    width: 2em;
+	height: 60px;
+    text-indent: -9000px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#filterSelect {
+     position: absolute;
+     top: 0.4em;
+     width: auto;
+     right: 10%;
+    z-index: 1000;
+}
+ 
+.close:before {
+    content: 'x';
+    font-weight: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3em;
+    line-height: 0.6;
+    text-align: center;
+    text-indent: 0px;
+}
+
+.innerScroll {
+    position: static;
+    overflow-y: auto;
+}
+
+.noscroll {
+	overflow: hidden;
+}
+
+/**** Item ****/
+
+.item {
+	margin: 5px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	color: #222;
+}
+
+.item * {
+	position: absolute;
+	margin: 0;
+}
+
+.item .descriptionEn {
+	left: 5%;
+	width: 90%;
+	line-height: 100%;
+	font-size: 80%;
+	text-align: center;
+	overflow-y: auto;
+	color: #FFF;
+}
+
+.item .labelEn {
+	left: 5%;
+        text-align : center;
+        overflow-x: hidden;
+	overflow-y: auto;
+	top: 5%;
+	width: 90%;
+	font-size: 90%;
+	color: #F2F2F2;
+}
+
+.item .groupLabel {
+	left: 1%;
+	overflow: hidden;
+	top: 1%;
+	height: 30%;
+	width: 98%;
+	font-size: 90%;
+	color: #F2F2F2;
+}
+
+.item .predicateLabel {
+	left: 5%;
+	overflow: hidden;
+        position: absolute;
+        display: inline-block;
+	width: 90%;
+	color: #F2F2F2;
+}
+
+.item .predicate {
+	left: 5%;
+	overflow: visible;
+        position: absolute;
+        word-wrap: break-word;
+	width: 90%;
+	color: #F2F2F2;
+}
+
+/* .item .showUri { */
+/* 	overflow: hidden; */
+/* 	text-overflow: ellipsis; */
+/* 	-o-text-overflow: ellipsis; f�r Opera */
+/* 	white-space: nowrap; */
+/* 	left: 0.5em; */
+/* 	width: 100px; */
+/* 	bottom: 1.0em; */
+/* 	font-size: 0.7em; */
+/* } */
+
+.item .number {
+	font-size: 1.25em;
+	font-weight: bold;
+	color: hsla(0, 0%, 0%, .5);
+	right: 0.5em;
+	top: 0.5em;
+}
+
+.token_uri:hover {
+	cursor: pointer;
+}
+
+.token_uri:hover h3 {
+	text-shadow: 0 0 10px white, 0 0 10px white;
+}
+
+.token_uri:hover h2 {
+	color: white;
+}
+
+/**** Options ****/
+.options {
+	padding-bottom: 1.0em;
+}
+
+.options ul {
+	margin: 0;
+	list-style: none;
+}
+
+.options ul ul {
+	margin-left: 1.5em;
+}
+
+.options li {
+	float: left;
+	margin-bottom: 0.2em;
+}
+
+.options li a {
+	display: block;
+	padding: 0.4em 0.5em;
+	background-color: #DDD;
+	color: #222;
+	font-weight: bold;
+	text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
+	background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 0.5),
+		hsla(0, 0%, 100%, 0.0) );
+	background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, 0.5),
+		hsla(0, 0%, 100%, 0.0) );
+	background-image: -ms-linear-gradient(top, hsla(0, 0%, 100%, 0.5),
+		hsla(0, 0%, 100%, 0.0) );
+	background-image: -o-linear-gradient(top, hsla(0, 0%, 100%, 0.5),
+		hsla(0, 0%, 100%, 0.0) );
+	background-image: linear-gradient(top, hsla(0, 0%, 100%, 0.5),
+		hsla(0, 0%, 100%, 0.0) );
+}
+
+.options li a:hover {
+	background-color: #5BF;
+}
+
+.options li a:active {
+	background-color: #39D;
+	-webkit-box-shadow: inset 0 2px 8px hsla(0, 0%, 0%, 0.6);
+	-moz-box-shadow: inset 0 2px 8px hsla(0, 0%, 0%, 0.6);
+	-o-box-shadow: inset 0 2px 8px hsla(0, 0%, 0%, 0.6);
+	box-shadow: inset 0 2px 8px hsla(0, 0%, 0%, 0.6);
+}
+
+.options li a {
+	border-left: 1px solid hsla(0, 0%, 100%, 0.3);
+	border-right: 1px solid hsla(0, 0%, 0%, 0.2);
+}
+
+.options li:first-child a {
+	border-radius: 7px 0 0 7px;
+	border-left: none;
+}
+
+.options li:last-child a {
+	border-radius: 0 7px 7px 0;
+}
+
+.options li a.selected {
+	background-color: #13F;
+	text-shadow: none;
+	color: white;
+}
+
+/* Combination filter options*/
+.options .option-combo {
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+}
+
+.options .option-combo > h2{
+	color: #313131;
+}
+
+.options .option-combo ul {
+	margin-right: 20px;
+	display: inline-block;
+	color: black;
+}
+
+.options .option-combo h2,.options .option-combo h4 {
+	line-height: 34px;
+	margin-bottom: 0;
+	margin-right: 5px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* The Magnificent Clearfix: nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,.clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.widthCalc {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+}
+
+/*** Multi Select ***/
+a.multiSelect {
+	background: #FFF url(images/dropdown.blue.png) right center no-repeat;
+	border: solid 1px #BBB;
+	padding-right: 20px;
+	position: relative;
+	cursor: default;
+	text-decoration: none;
+	color: black;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+}
+
+a.multiSelect:link, a.multiSelect:visited, a.multiSelect:hover, a.multiSelect:active {
+	color: black;
+	text-decoration: none;
+}
+
+a.multiSelect span
+{
+	margin: 1px 0px 1px 3px;
+	overflow: hidden;
+	display: -moz-inline-stack;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+a.multiSelect.active, 
+a.multiSelect.focus {
+	border: inset 1px #000;
+}
+
+.multiSelectOptions {
+	margin-top: -1px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: solid 1px #B2B2B2;
+	background: #FFF;
+}
+
+.multiSelectOptions LABEL {
+	padding: 0px 2px;
+	display: block;
+	white-space: nowrap;
+}
+
+.multiSelectOptions LABEL.optGroup
+{
+	font-weight: bold;
+}
+
+.multiSelectOptions .optGroupContainer LABEL
+{
+	padding-left: 10px;
+}
+
+.multiSelectOptions.optGroupHasCheckboxes .optGroupContainer LABEL
+{
+	padding-left: 18px;
+}
+
+.multiSelectOptions input{
+	vertical-align: middle;
+}
+
+.multiSelectOptions LABEL.checked {
+	background-color: #dce5f8;
+}
+
+.multiSelectOptions LABEL.selectAll {
+	border-bottom: dotted 1px #CCC;
+}
+
+.multiSelectOptions LABEL.hover {
+	background-color: #3399ff;
+	color: white;
+}

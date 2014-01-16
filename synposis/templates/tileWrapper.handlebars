@@ -1,0 +1,6 @@
+	<div class="item {{#each filterables}}{{.}} {{/each}}{{#if token}}{{token}}{{/if}} {{index}}">
+		{{#if subject}}
+			<h2 class="showUri" style="display:none">{{subject.value}}</h2>
+		{{/if}}
+		<p class="number" style="display:none">{{index}}</p>
+	</div>

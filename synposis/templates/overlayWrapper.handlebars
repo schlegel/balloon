@@ -1,0 +1,10 @@
+		<div class="{{cssClass.overlay}}">
+                                                            <div style="visibility:hidden">{{id}}</div>
+                                                            <select multiple="multiple" id="filterSelect">
+                                                            {{#each nodeFilters}} <option value={{@key}} selected="selected"> {{@key}} </option> {{/each}}
+                                                            {{#each tileFilters}} <option value={{@key}} selected="selected"> {{@key}} </option> {{/each}}
+                                                            </select>
+			<span class="close">close</span>
+			<div class="{{cssClass.overlayContent}}">
+			</div>
+		</div>

@@ -1,93 +1,360 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Balloon by schlegel</title>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>balloon - Consuming Linked Data</title>
+        <meta name="description" content="balloon - Consuming Linked Data.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Balloon</h1>
-        <p>Balloon</p>
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png">
 
-        <p class="view"><a href="https://github.com/schlegel/balloon">View the Project on GitHub <small>schlegel/balloon</small></a></p>
+        <!-- plugin css  -->
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="js-plugin/pretty-photo/css/prettyPhoto.css" />
+        <link rel="stylesheet" type="text/css" href="js-plugin/rs-plugin/css/settings.css" media="screen" />
+        <link type="text/css" rel="stylesheet" href="js-plugin/hoverdir/css/style.css">
+
+        <!-- web font  -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800" rel="stylesheet" type="text/css">
+        <!-- icon fonts -->
+        <link type="text/css" rel="stylesheet" href="font-icons/custom-icons/css/custom-icons.css">
+        <link type="text/css" rel="stylesheet" href="font-icons/custom-icons/css/custom-icons-ie7.css">
+
+        <!-- custom css -->
+        <link type="text/css" rel="stylesheet" href="css/layout.css">
+        <link type="text/css" id="colors" rel="stylesheet" href="css/colors.css">
+
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <!--[if gte IE 9]><style type="text/css">.iconBig, .active, .hover a , .Shover a { filter: none !important; } </style> <![endif]-->
+
+        <script src="js/modernizr-2.6.1.min.js"></script>
+    </head>
+    <body>
+        <header id="mainHeader" class="clearfix">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a href="index.html" class="brand"><img src="images/main-logo.png" alt="balloon Project"/></a>
+                        <nav id="mainMenu" class="clearfix">
+                            <ul>
+                                <li><a href="index.html" class="firstLevel active" >Home</a>
+                                </li>
+                                <li><a href="news.html" class="firstLevel" >News</a>
+                                </li>
+                                <li><a href="about.html" class="firstLevel" >About</a>
+                                </li>
+                                <li><a href="balloon-overflight.html" class="firstLevel" >Overflight</a>
+                                </li>
+                                <li><a href="balloon-fusion.html" class="firstLevel " >Fusion</a>
+                                </li>
+                                <li><a href="balloon-commonalities.html" class="firstLevel " >Commonalities</a>
+                                </li>
+                                <li><a href="balloon-synopsis.html" class="firstLevel " >Synopsis</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="globalWrapper">
+            <section  id="sliderWrapperRS">
+                <!-- background slider dark bloc -->
+                <div id="bgSliderBlocWrapper">
+                    <div class="container">
+                        <div id="bgSliderBloc">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="fullwidthbanner-container">
+                    <div class="fullwidthbanner" >
+                        <ul>
+                            <li data-transition="fade" data-slotamount="1" data-masterspeed="3000"><img src="images/slider/rs/thumb.png" alt="slide"/>
+                                <div class="caption lfr" data-x="25" data-y="68" data-speed="1000" data-start="300" data-easing="easeOutExpo"><img src="images/balloon_logo_big.png" width="450" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption sft" data-x="495" data-y="50" data-speed="300" data-start="600" data-easing="easeOutExpo" >
+                                    <h2>balloon toolsuite</h2>
+                                </div>
+                                <div class="caption sfb hidden-phone" data-x="495" data-y="125" data-speed="300" data-start="700" data-easing="easeOutExpo">
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Utilizing LOD with less effort</h3>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="495" data-y="159" data-speed="500" data-start="1000" data-easing="easeOutBounce" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Linked-Data-as-a-Service (LDaaS)</h3>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="495" data-y="193" data-speed="500" data-start="1250" data-easing="easeOutBounce" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Easy API-integration</h3>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="495" data-y="227" data-speed="500" data-start="1500" data-easing="easeOutBounce" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Ongoing research</h3>
+                                </div>
+                                <div class="caption sfb hidden-phone" data-x="495" data-y="270" data-speed="900" data-start="2000" data-easing="easeOutExpo" >
+                                    <a href="about.html" class="btn btn-medium">Read More</a>
+                                </div>
+
+                            </li>
+
+                            <li data-transition="fade" data-slotamount="2"><img src="images/slider/rs/thumb.png" alt="slide"/>
+                                <div class="caption lfl" data-x="500" data-y="65" data-speed="900" data-start="800" data-easing="easeOutBack"><img src="images/balloon_overflight.png" width="400px" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption sft" data-x="70" data-y="120" data-speed="300" data-start="1600" data-easing="easeOutExpo" >
+                                    <h2>balloon Overflight</h2>
+                                </div>
+                                <div class="caption sfb hidden-phone" data-x="72" data-y="305" data-speed="900" data-start="2500" data-easing="easeOutExpo" >
+                                    <a href="balloon-overflight.html" class="btn btn-medium">Read More</a>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="72" data-y="194" data-speed="500" data-start="1500" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;SPARQL based LOD crawling</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="72" data-y="228" data-speed="500" data-start="1700" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Index of basic structural relationships</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="72" data-y="262" data-speed="500" data-start="1900" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Bird's-eye view on Linked Data</h3>
+                                </div>
+                            </li>
 
 
-        <ul>
-          <li><a href="https://github.com/schlegel/balloon/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/schlegel/balloon/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/schlegel/balloon">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="balloon---consuming-linked-data" class="anchor" href="#balloon---consuming-linked-data"><span class="octicon octicon-link"></span></a><strong>balloon</strong> - Consuming Linked Data</h1>
+                            <li data-transition="fade" data-slotamount="1"><img src="images/slider/rs/thumb.png" alt="slide"/>
 
-<p>A tool-suite for Linked Data consumption. <strong>balloon</strong> aims in offering public services and tools to take advantage of the semantic web with less effort.
-The basic motivation is to establish a foundation for Linked Data as a Service (<strong>LDaaS</strong>). </p>
+                                <div class="caption lfr" data-x="85" data-y="60" data-speed="800" data-start="300" data-easing="easeOutBack"><img src="images/balloon_fusion.png" width="350px" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption sft" data-x="465" data-y="48" data-speed="300" data-start="500" data-easing="easeOutExpo" >
+                                    <h2>balloon Fusion</h2>
+                                </div>
 
-<p><strong>!!! The project is currently under development and will be available soon !!!</strong></p>
+                                <div class="caption sfb hidden-phone" data-x="467" data-y="287" data-speed="900" data-start="1500" data-easing="easeOutExpo" >
+                                    <a href="balloon-fusion.html" class="btn btn-medium">Read More</a>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="467" data-y="176" data-speed="500" data-start="900" data-easing="easeOutExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Smart SPARQL rewriting</h3>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="467" data-y="210" data-speed="500" data-start="1100" data-easing="easeOutExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Endpoint Discovery based on equivalence entities</h3>
+                                </div>
+                                <div class="caption sfl hidden-phone" data-x="467" data-y="244" data-speed="500" data-start="1300" data-easing="easeOutExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Query federation for an enhanced result set</h3>
+                                </div>
+                            </li>
+                            <li data-transition="fade" data-slotamount="2"><img src="images/slider/rs/thumb.png" alt="slide"/>
+                                <div class="caption lfl" data-x="30" data-y="150" data-speed="900" data-start="800" data-easing="easeOutBack"><img src="images/commonalities_graph.png" width="380px" alt="slide" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption sft" data-x="400" data-y="60" data-speed="300" data-start="1600" data-easing="easeOutExpo" >
+                                    <h2>balloon Commonalities</h2>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="450" data-y="134" data-speed="500" data-start="1500" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Finding common (relevant) super types of entities</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="450" data-y="168" data-speed="500" data-start="1700" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Finding instances for given type</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="450" data-y="202" data-speed="500" data-start="1800" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Finding related entities based on types and predicates</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="450" data-y="236" data-speed="500" data-start="1900" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Associate Rule Mining based on structure</h3>
+                                </div>
 
-<h1>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
+                                <div class="caption sfb hidden-phone" data-x="450" data-y="280" data-speed="900" data-start="2500" data-easing="easeOutExpo" >
+                                    <a href="balloon-commonalities.html" class="btn  btn-medium">Read More</a>
+                                </div>
+                            </li>
+                            <li data-transition="fade" data-slotamount="3"><img src="images/slider/rs/thumb.png" alt="slide"/>
+                                <div class="caption lfl" data-x="450" data-y="200" data-speed="900" data-start="800" data-easing="easeOutBack"><img src="images/slider/balloon_synopsis.png" width="450" alt="slide" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption lfr" data-x="550" data-y="120" data-speed="900" data-start="800" data-easing="easeOutBack"><img src="images/slider/balloon_synopsis2.png" width="400" alt="slide" class="ie8PngFix sliderImage"/></div>
+                                <div class="caption sft" data-x="50" data-y="60" data-speed="300" data-start="1800" data-easing="easeOutExpo" >
+                                    <h2>balloon Synopsis</h2>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="52" data-y="134" data-speed="500" data-start="1500" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;RDF Viewer & Browser</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="52" data-y="168" data-speed="500" data-start="1700" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;HTML & Javascript based (jQuery Plugin)</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="52" data-y="202" data-speed="500" data-start="1800" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Automatic information enhancement</h3>
+                                </div>
+                                <div class="caption lfr hidden-phone" data-x="52" data-y="236" data-speed="500" data-start="1900" data-easing="easeInExpo" >
+                                    <h3><i class="icon-right-circle"></i>&nbsp;Configurable Templating</h3>
+                                </div>
 
-<ul>
-<li>
-<strong>balloon Overflight</strong>
+                                <div class="caption sfb hidden-phone" data-x="52" data-y="280" data-speed="900" data-start="2500" data-easing="easeOutExpo" >
+                                    <a href="balloon-synopsis.html" class="btn btn-medium">Read More</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="tp-bannertimer"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- slider -->
 
-<ul>
-<li>  SPARQL based LOD crawling</li>
-<li>  Index of basic structural relationships</li>
-<li>Bird's-eye view on Linked Data</li>
-</ul>
-</li>
-<li>
-<strong>balloon Fusion</strong> 
 
-<ul>
-<li>SPARQL query federation service based on equivalence resources</li>
-<li>Automatic endpoint discovery</li>
-</ul>
-</li>
-<li>
-<strong>balloon Synopsis</strong>
+            <!-- content -->
+            <section id="content" class="home">
 
-<ul>
-<li>HTML/JavaScript RDF Viewer &amp; Browser</li>
-<li>jQuery Plugin </li>
-<li>  Automatic information enhancement</li>
-<li>  Configurable Templating</li>
-</ul>
-</li>
-<li>  <strong>balloon Commonalities</strong>
+                <!-- three blocs -->
+                <section class="sliceTop">
 
-<ul>
-<li>  Finding common (relevant) super types of entities</li>
-<li>  Finding instances for given type</li>
-<li>  Finding related entities based on types and predicates</li>
-</ul>
-</li>
-</ul><h1>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+                    <div class="container">
 
-<p>Today’s vision of a common Web of Data is mostly achieved and coined by the Linked Open Data movement. The first wave of this movement transformed silo-based portions of data into a plethora of open accessible and interlinked data sets. The community itself provided guidelines (e.g., 5 ★ Open Data ) as well as open source tools to foster interactions with the Web of data. Harmonization between those data sets has been established at the modeling level with unified description schemes characterizing a formal syntax and common data semantic. Without doubt, Linked Open Data is the de-facto standard to publish and interlink distributed data sets in the Web commonly exposed in SPARQL endpoints. However, a convenient request considering the globally described data set is only possible with strong limitations. <strong>balloon</strong> wants to overcome this issue by providing a large choice of services to simplify utilizing the web of data for your projects. We think that Linked Data tools should be available as a service (<strong>LDaaS</strong>), to avoid high setup and integration costs and data duplication. Therefore all balloon services will be public available and don't need to be installed locally.</p>
+                        <div class="row">
+                            <div class="span12">
 
-<hr><p>This software has been brought to you by the <a href="dimis.fim.uni-passau.de">Chair of Distributed Information Systems (DIMIS)</a> and <a href="http://mics.fim.uni-passau.de/">Media Computer Science (MiCS)</a> at the University Passau. The project was developed within the CODE project funded by the EU Seventh Framework Programme, grant agreement number 296150.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/schlegel">schlegel</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+                                <div class="topQuote">
+                                    <h1>
+                                       <div><strong>balloon</strong>: A toolsuite for Linked Data consumption.</div> 
+                                    </h1>
+                                </div>
+                                <div class="topBox clearfix">
+                                    <div class="well">
+                                        <p><strong>balloon</strong> aims in offering public services and tools to take advantage of the semantic web with less effort. The basic motivation is to establish a foundation for Linked Data as a Service (LDaaS).</p>
+                                        <p>Today’s vision of a common Web of Data is mostly achieved and coined by the Linked Open Data movement. The first wave of this movement transformed silo-based portions of data into a plethora of open accessible and interlinked data sets. The community itself provided guidelines (e.g., <a href="http://5stardata.info/">5 ★ Open Data</a> ) as well as open source tools to foster interactions with the Web of data. Harmonization between those data sets has been established at the modeling level with unified description schemes characterizing a formal syntax and common data semantic. Without doubt, Linked Open Data is the de-facto standard to publish and interlink distributed data sets in the Web commonly exposed in SPARQL endpoints. However, a convenient request considering the globally described data set is only possible with strong limitations. balloon wants to overcome this issue by providing a large choice of services to simplify utilizing the web of data for your projects. We think that Linked Data tools should be available as a service (LDaaS), to avoid high setup and integration costs and data duplication. Therefore all balloon services will be public available and don't need to be installed locally.</p>
+                                    </div>
+                                    <div class="bigIconsColumnsWrapper">
+                                        <article class="one_fourth">
+                                            <a href="balloon-overflight.html" class="iconWrapper iconBig ch-item">
+                                                <i class="icon-flight"></i>
+                                                <div class="ch-info">
+                                                    <span> more info </span>
+                                                </div>
+                                            </a>
+                                            <h2 class="smallHeading"><span>Overflight</span> </h2>
+                                            <p>Index and unify co-reference, instance and inheritance information of Linked Data endpoints, generating a bird's-eye view on the data.</p>
+                                        </article>
+
+                                        <article class="one_fourth">
+                                            <a href="balloon-fusion.html" class="iconWrapper iconBig ch-item">
+                                                <i class="icon-beaker"></i>
+                                                <div class="ch-info">
+                                                    <span> more info </span>
+                                                </div>
+                                            </a>
+                                            <h2 class="smallHeading">Fusion</h2>
+                                            <p>SPARQL rewriting based on collected co-reference information (synonyms) combined with automatic endpoint discovery results in an intelligent query federation.</p>
+                                        </article>
+
+                                        <article class="one_fourth">
+                                            <a href="balloon-commonalities.html" class="iconWrapper iconBig ch-item">
+                                                <i class="icon-sitemap"></i>
+                                                <div class="ch-info">
+                                                    <span> more info </span>
+                                                </div>
+                                            </a>
+                                            <h2 class="smallHeading">Commonalities</h2>
+                                            <p>Exploit extracted structure to find shared characteristics of entitites and types. The range goes from simple type index up to data mining and inference</p>
+                                        </article>
+
+                                        <article class="one_fourth last">
+                                            <a href="balloon-synopsis.html" class="iconWrapper iconBig ch-item">
+                                                <i class="icon-eye"></i>
+                                                <div class="ch-info">
+                                                    <span> more info </span>
+                                                </div>
+                                            </a>
+                                            <h2 class="smallHeading">Synopsis</h2>
+                                            <p>HTML & Javascript based RDF browser with information enhancement, offering an simple access to semantic information.</p>
+                                        </article>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="slice">
+                    <div  class="container">
+                        <div class="row-fluid callToActionBoxed">
+                            <div class="span7">
+                                <div class="ctaText">
+                                    <h3><strong>balloon</strong> is Open Source!</h3>
+                                    <p><strong>You want to improve balloon or add features?</strong> Play a part in the future of this project and modify it.</p>
+                                </div>
+                            </div>
+                            <div class="span5">
+                                <div class="btnWrapper">
+                                    <a href="https://github.com/schlegel/balloon" class="iconBtn" title="Buy This awesome theme"><i class="icon-github"></i> View balllon on GitHub!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+            <footer class="footer1">
+                <div class="container" id="footer">
+                    <div class="row">
+                        <div class="span4 testimonialWidget">
+                            <h2>Acknowledgement</h2>
+                            <div class="divider"><span></span></div>
+                            <p><a href="http://code-research.eu/"><img src="images/code_logo.png"/></a></p>
+                            <p>The presented work was developed within the <a href="http://code-research.eu/">CODE project</a> funded by the <a href="http://cordis.europa.eu/projects/rcn/103419_en.html">EU Seventh Framework Programme</a>, grant agreement number 296150. </p>
+                        </div>
+                        <div class="span4 tweetWidget">
+                            <h2>Latest CODE tweets</h2>
+                            <div class="divider"><span></span></div>
+                            <div class="tweet">
+                                <a class="twitter-timeline" href="https://twitter.com/CODEresearchEU" data-widget-id="422661802476834816">Tweets von @CODEresearchEU</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                        </div>
+                        <div class="span4 contactWidget">
+                            <h2>Contact us</h2>
+                            <div class="divider"><span></span></div>
+                            <address>
+                                <strong>Chair of Distributed Information Systems </strong>
+                                <p>
+                                    University of Passau<br/>
+                                    <i class="icon-location"></i>&nbsp;Innstraße 43 <br/>
+                                    &nbsp;94032 Passau <br/>
+                                    &nbsp;Germany
+                                </p>
+                                <p>
+                                    <i class="icon-phone"></i>&nbsp;+49(0)851/509-3061
+                                </p>
+                                <p>
+                                    Responsible persons: <br/>
+                                    <div><i class="icon-mail-alt"></i>&nbsp;<a href="mailto:schlegel@dimis.fim.uni-passau.de?subject=balloon Toolsuite">Kai Schlegel, M.Sc.</a></div>
+                                    <div><i class="icon-mail-alt"></i>&nbsp;<a href="mailto:stegmaier@dimis.fim.uni-passau.de?subject=balloon Toolsuite">Dipl. Inf. Florian Stegmaier</a></div>
+                                </p>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <footer class="footer2" id="footerRights">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <h2><i class="icon-attention"> </i>This is research in progress and constantly under development <i class="icon-attention"> </i></h2>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <script type="text/javascript" src="js-plugin/respond/respond.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="js-plugin/jquery-ui/jquery-ui-1.8.23.custom.min.js"></script>
+        <!-- third party plugins  -->
+        <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap-carousel.js"></script>
+        <script type="text/javascript" src="js-plugin/easing/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js-plugin/pretty-photo/js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="js-plugin/hoverdir/jquery.hoverdir.js"></script>
+        <!-- jQuery KenBurn Slider  -->
+        <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <!-- Custom  -->
+        <script type="text/javascript" src="js/custom.js"></script>
+    </body>
 </html>

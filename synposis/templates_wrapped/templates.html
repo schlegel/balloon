@@ -1,0 +1,75 @@
+<script id="isotopeItem" type="text/x-handlebars-template">
+	<div class="item {{subject.token}} {{#if type}}{{type.value}}{{/if}} {{index}}">
+		{{#if subject}}
+			<h2 class="showUri" style="display:none">{{subject.value}}</h2>
+		{{/if}}
+		<p class="number">{{index}}</p>
+		{{> isotopeItemContent}}
+	</div>
+</script>
+
+<script id="par_isotopeItemContent" type="text/x-handlebars-template">
+		{{#if label}}
+			<h3 class="itemContent labelEn ellipsis">{{label.value}}</h3>
+		{{/if}}
+		{{#ifLang description}}
+			<div class="itemContent descriptionEn ellipsis">{{description.value}}</div>
+		{{/ifLang}}
+		{{#if predicate}}
+			<div class="itemContent predicate">{{predicate.value}}</div>
+		{{/if}}
+</script>
+
+<script id="sortOptions" type="text/x-handlebars-template">
+	<div class="option-combo sorter">
+		<h2>Sort:</h2>
+		<ul class="option-set clearfix" data-option-key="sortBy">
+			{{#keysEach .}}
+				<li><a data-sort-value="{{.}}" class="{{.}}">{{.}}</a></li>
+			{{/keysEach}}
+		</ul>
+	</div>
+</script>
+
+<script id="filterOptions" type="text/x-handlebars-template">
+	<div class="option-combo filter">
+		<h2>Filter:</h2>
+		<ul class="option-set clearfix" data-option-key="filter">
+			{{#each .}}
+				<li><a data-filter-value="{{value}}" class="{{value}}">{{label}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+</script>
+
+<script id="overlayItem" type="text/x-handlebars-template">
+		<div class="{{cssClass.overlay}} {{cssClass.overlay}}_{{index}}">
+			<span class="close">close</span>
+			<div class="{{cssClass.overlayContent}}">
+			</div>
+		</div>
+	</script>
+	
+<script id="previewItem" type="text/x-handlebars-template">
+		<div class="{{cssClass.preview}} {{cssClass.preview}}_{{index}}">
+			<div class="{{cssClass.previewContent}}">
+			</div>
+		</div>
+	</script>
+
+<script id="overlayContent" type="text/x-handlebars-template">
+	{{#if label}}
+		<h1>{{label}}</h1>
+		<div class="innerScroll">
+			<div></div>
+		</div>
+	{{/if}}
+	</script>
+
+<script id="groupDropDown" type="text/x-handlebars-template">
+    <select id="GroupDropDown">
+		{{#each .}}
+      		<option value={{val}}>{{label}}</option>
+		{{/each}}
+    </select>
+	</script>
