@@ -32,10 +32,12 @@
         <!-- custom css -->
         <link type="text/css" rel="stylesheet" href="css/layout.css">
         <link type="text/css" id="colors" rel="stylesheet" href="css/colors.css">
+        
+        <!-- visaRDF -->
+        <link rel="stylesheet" href="synopsis/css/visaRdf.css" type="text/css" />
 
         <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <!--[if gte IE 9]><style type="text/css">.iconBig, .active, .hover a , .Shover a { filter: none !important; } </style> <![endif]-->
-
         <script src="js/modernizr-2.6.1.min.js"></script>
     </head>
     <body>
@@ -74,7 +76,7 @@
                 <header class="headerPage">
                     <div class="container clearfix">
                         <div class="row">
-                            <h1 class="span8">balloon Synposis</h1>
+                            <h1 class="span8">balloon Synopsis</h1>
                         </div>
                     </div>
                 </header>
@@ -98,10 +100,6 @@
                                     <li><i class="icon-eye"></i> Configurable Templating (aggregate information for human-friendly view e.g. Google Maps instead of long/lat)</li>
                                     <li><i class="icon-eye"></i> Timeline (track history of the browsing behaviour)</li>
                                 </ul>
-                                <div class="alert alert-error" style="text-align: center;">
-                                    <strong>Sorry!</strong> Demonstration currently not available. Stay tuned!
-                                </div>
-
                                 <div class="row"> 
                                     <div class="offset3 span6">
                                         <div class="boxWrapper">
@@ -112,6 +110,34 @@
                                         </div>
                                     </div>
                                 </div>
+                                <h2>Download and Sources</h2>
+                                <div class="divider"><span></span></div>  
+                                balloon Synopsis is free and open-source jQuery plugin. All contributions are welcome. Sources and the build are available on 
+                                <p style="margin: 22px;
+text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" class="iconBtn"><i class="icon-github"></i>GitHub!</a></p>
+                                <h2>Demonstration</h2>
+                                <div class="divider"><span></span></div>  
+                                <p>This demonstration queries the endpoint (containing dumps from dbpedia) for cities in Germany. After the result is visualized, you can browse the entities by clicking on them. The endpoint will be automatically queried for more information. Keep in mind, that the current endpoint can have a long latency (about 1 second for each query). The current prototype allows sorting, filtering and searching for predicates.</p>
+                                <p><strong>Click on "Insert remote data" to start the demo.</strong></p>
+                                <div class="visaRDF">
+                                </div>
+
+                                <form>
+                                     <label for="serviceinputbox">Remote data service:</label> <input type="text" name="serviceinputbox" value="http://zaire.dimis.fim.uni-passau.de:8080/bigdata/sparql">
+                                     <p>
+                                        <label for="queryinputbox">Remote data query:</label>
+                                        <textarea type="text" name="queryinputbox">SELECT ?subject ?predicate ?object { 
+    BIND( rdfs:label as ?predicate) ?subject ?predicate ?object. 
+    ?subject a <http://dbpedia.org/ontology/Place>.
+    ?subject <http://dbpedia.org/ontology/country> <http://dbpedia.org/resource/Germany>.
+    FILTER (lang(?object) = 'en')
+} LIMIT 500
+                                        </textarea>
+                                    </p>
+                                    <p>
+                                        <input class="btn" type="button" name="insertRemote" value="Insert remote data" onclick="$('.visaRDF').data('plugin_visaRDF').insertRemoteDataQuery(this.form.serviceinputbox.value, this.form.queryinputbox.value);">
+                                    </p>
+                                </form>
                             </section>       
                     </div>
                         </div>
@@ -173,8 +199,9 @@
         </div>
 
         <script type="text/javascript" src="js-plugin/respond/respond.min.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="js-plugin/jquery-ui/jquery-ui-1.8.23.custom.min.js"></script>
+        
         <!-- third party plugins  -->
         <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap-carousel.js"></script>
@@ -184,7 +211,69 @@
         <!-- jQuery KenBurn Slider  -->
         <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
         <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <!-- synopsis -->
+        <script type="text/javascript" src="synopsis/js/libs/handlebars-v1.1.2.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/deepCopy.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/jquery.quickfit.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/jquery.multiSelect.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/jquery.isotope.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/rdf_store.js"></script>
+        <script type="text/javascript" src="synopsis/js/libs/rgbcolor.js"></script>
+        <script type="text/javascript" src="synopsis/build/visaRDF.js"></script>
+
         <!-- Custom  -->
         <script type="text/javascript" src="js/custom.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                $('.visaRDF').visaRDF({
+                    nodeFilters: {
+                        blacklistURI: {
+                            config: new Array(".*someRegExp.*")
+                        },
+                        maps: {
+                            fn: function(plugin, nodes, config) {
+                                $.each(nodes, function(i, node) {
+                                    if(node.predicates && node.predicates[0].value === 'http://www.georss.org/georss/point') {
+                                        node.useTemplateIdentifier = 'maps';
+                                        node.lat = node.value.split(" ")[0];
+                                        node.long = node.value.split(" ")[1];
+                                        node.tileWidth = '410px';
+                                        node.tileHeight = '200px';
+                                        node.disableBrowsing = 'true';
+                                    }
+                                });
+                                return nodes;
+                            },
+                            template: '<div><iframe width="410" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll={{node.lat}},{{node.long}}&amp;spn=0.079502,0.145912&amp;z=12&amp;output=embed"></iframe></div>'
+                        },
+
+                    },
+                    tileFilters: {
+                        resizeFilter : {
+                            fn: function(plugin, tiles) {
+                                $.each(tiles, function(i, tile) {
+                                    tile = $(tile);
+                                    if(tile.data('node').tileWidth) {
+                                        tile.width(tile.data('node').tileWidth);
+                                    }
+
+                                    if(tile.data('node').tileHeight) {
+                                        tile.height(tile.data('node').tileHeight);
+                                    }
+                                });
+                                return tiles;
+                            }
+                        }
+                    },
+                    layerOptions : {
+                        remoteOptions : {
+                            remoteLimit: 1000,
+                            remoteBackend : ['http://zaire.dimis.fim.uni-passau.de:8080/bigdata/sparql']
+                        }
+                    }
+                });
+            });
+            </script>
     </body>
 </html>

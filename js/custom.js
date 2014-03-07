@@ -1,51 +1,51 @@
-$(document).ready(function() {
+$(document).ready(function () {
     /***** form placeholder for IE *****/
-    if(!Modernizr.input.placeholder){
-
-        $('[placeholder]').focus(function() {
-            var input = $(this);
-            if (input.val() == input.attr('placeholder')) {
-                input.val('');
-                input.removeClass('placeholder');
-            }
-        }).blur(function() {
-            var input = $(this);
-            if (input.val() == '' || input.val() == input.attr('placeholder')) {
-                input.addClass('placeholder');
-                input.val(input.attr('placeholder'));
-            }
-        }).blur();
-        $('[placeholder]').parents('form').submit(function() {
-            $(this).find('[placeholder]').each(function() {
-                var input = $(this);
-                if (input.val() == input.attr('placeholder')) {
-                    input.val('');
-                }
-            })
-        });
-
-    }
+//    if (!Modernizr.input.placeholder) {
+//
+//        $('[placeholder]').focus(function () {
+//            var input = $(this);
+//            if (input.val() == input.attr('placeholder')) {
+//                input.val('');
+//                input.removeClass('placeholder');
+//            }
+//        }).blur(function() {
+//            var input = $(this);
+//            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+//                input.addClass('placeholder');
+//                input.val(input.attr('placeholder'));
+//            }
+//        }).blur();
+//        $('[placeholder]').parents('form').submit(function() {
+//            $(this).find('[placeholder]').each(function() {
+//                var input = $(this);
+//                if (input.val() == input.attr('placeholder')) {
+//                    input.val('');
+//                }
+//            })
+//        });
+//
+//    }
 
     /*
     |--------------------------------------------------------------------------
     | PRETTY PHOTOS
     |--------------------------------------------------------------------------
      */
-    if( $("a.prettyPhoto").length){
-        $("a.prettyPhoto").prettyPhoto({
-            animation_speed:'fast',
-            slideshow:10000,
-            hideflash: true
-        });
-    }
-
+//    if( $("a.prettyPhoto").length){
+//        $("a.prettyPhoto").prettyPhoto({
+//            animation_speed:'fast',
+//            slideshow:10000,
+//            hideflash: true
+//        });
+//    }
+//
 
     /*
     |--------------------------------------------------------------------------
     | TOOLTIP
     |--------------------------------------------------------------------------
      */
-    $('.tips').tooltip();
+//    $('.tips').tooltip();
 
     /*
     |--------------------------------------------------------------------------
@@ -53,114 +53,114 @@ $(document).ready(function() {
     |--------------------------------------------------------------------------
      */
 
-    $('.accordion').on('show hide', function(e){
-        $(e.target).siblings('.accordion-heading').find('.accordion-toggle i').toggleClass('icon-right-circle icon-down-circle', 200);
-    });
+//    $('.accordion').on('show hide', function(e){
+//        $(e.target).siblings('.accordion-heading').find('.accordion-toggle i').toggleClass('icon-right-circle icon-down-circle', 200);
+//    });
 
     /*
     |--------------------------------------------------------------------------
     | CONTACT
     |--------------------------------------------------------------------------
      */
-    $('.slideContact').click(function(e){
-
-        if ( $(window).width() >= 800){
-
-            $('#contact').slideToggle('normal', 'easeInQuad',function(){
-
-                $('#contactinfoWrapper').css('margin-left', 0);
-                $('#mapSlideWrapper').css('margin-left', 3000);
-                $('#contactinfoWrapper').fadeToggle();
-
-
-            });
-            $('#closeContact').fadeToggle();
-            return false;
-
-        }else{
-
-            return true;
-
-        }
-    });
-
-
-    $('#closeContact').click(function(e){
+//    $('.slideContact').click(function(e){
+//
+//        if ( $(window).width() >= 800){
+//
+//            $('#contact').slideToggle('normal', 'easeInQuad',function(){
+//
+//                $('#contactinfoWrapper').css('margin-left', 0);
+//                $('#mapSlideWrapper').css('margin-left', 3000);
+//                $('#contactinfoWrapper').fadeToggle();
+//
+//
+//            });
+//            $('#closeContact').fadeToggle();
+//            return false;
+//
+//        }else{
+//
+//            return true;
+//
+//        }
+//    });
 
 
-        $('#contactinfoWrapper').fadeOut('normal', 'easeInQuad',function(){
-            $('#contactinfoWrapper').css('margin-left', 0);
-            $('#mapSlideWrapper').css('margin-left', 3000);
-        });
-
-        $('#contact').slideUp('normal', 'easeOutQuad');
-
-        $(this).fadeOut();
-
-        e.preventDefault();
-
-    });
+//    $('#closeContact').click(function(e){
+//
+//
+//        $('#contactinfoWrapper').fadeOut('normal', 'easeInQuad',function() {
+//            $('#contactinfoWrapper').css('margin-left', 0);
+//            $('#mapSlideWrapper').css('margin-left', 3000);
+//        });
+//
+//        $('#contact').slideUp('normal', 'easeOutQuad');
+//
+//        $(this).fadeOut();
+//
+//        e.preventDefault();
+//
+//    });
 
     /* MAP */
-    $('#mapTrigger').click(function(e){
+//    $('#mapTrigger').click(function(e){
+//
+//
+//        $('#mapSlideWrapper').css('display', 'block');
+//        initialize('mapWrapper');
+//
+//        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
+//            marginLeft:'-2000px'
+//        }, 400, function() {});
+//
+//
+//        $('#mapSlideWrapper').animate({
+//            marginLeft:'15px'
+//        }, 400, function() {});
+//
+//        appendBootstrap();
+//
+//        e.preventDefault();
+//    });
 
 
-        $('#mapSlideWrapper').css('display', 'block');
-        initialize('mapWrapper');
-
-        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
-            marginLeft:'-2000px'
-        }, 400, function() {});
-
-
-        $('#mapSlideWrapper').animate({
-            marginLeft:'15px'
-        }, 400, function() {});
-
-        appendBootstrap();
-
-        e.preventDefault();
-    });
-
-
-    $('#mapTriggerLoader').click(function(e){
-
-
-        $('#mapSlideWrapper, #contactinfoWrapperPage').css('display', 'block');
-
-        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
-            marginLeft:'-2000px'
-        }, 400, function() {});
+//    $('#mapTriggerLoader').click(function(e){
+//
+//
+//        $('#mapSlideWrapper, #contactinfoWrapperPage').css('display', 'block');
+//
+//        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
+//            marginLeft:'-2000px'
+//        }, 400, function() {});
+//
+//
+//        $('#mapSlideWrapper').animate({
+//            marginLeft:'15px'
+//        }, 400, function() {});
+//
+//
+//        appendBootstrap();
+//
+//        e.preventDefault();
+//    });
 
 
-        $('#mapSlideWrapper').animate({
-            marginLeft:'15px'
-        }, 400, function() {});
-
-
-        appendBootstrap();
-
-        e.preventDefault();
-    });
-
-
-    $('#mapReturn').click(function(e){
-        //$('#mapWrapper').css('margin-bottom', '3em');
-
-
-        $('#mapSlideWrapper').animate({
-            marginLeft:'3000px'
-        }, 400, function() {});
-
-
-        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
-            marginLeft:'0'
-        }, 400, function() {
-            $('#mapSlideWrapper').css('display', 'none');
-        });
-
-        e.preventDefault();
-    });
+//    $('#mapReturn').click(function(e){
+//        //$('#mapWrapper').css('margin-bottom', '3em');
+//
+//
+//        $('#mapSlideWrapper').animate({
+//            marginLeft:'3000px'
+//        }, 400, function() {});
+//
+//
+//        $('#contactinfoWrapper, #contactinfoWrapperPage').animate({
+//            marginLeft:'0'
+//        }, 400, function() {
+//            $('#mapSlideWrapper').css('display', 'none');
+//        });
+//
+//        e.preventDefault();
+//    });
 
 
     /*
@@ -168,86 +168,86 @@ $(document).ready(function() {
     | SCROLL (portfolio horizontal)
     |--------------------------------------------------------------------------
      */
-    if($("div#makeMeScrollable").length){
-        $("div#makeMeScrollable").smoothDivScroll({
-
-            touchScrolling:true,
-            mousewheelScrolling: "vertical"
-        });
-
-
-        $('.showInfo').click(function(e){
-
-            $('.pInfo').find('h3').css('margin-top' , '-400px');
-            $('.pInfo').css('display', 'none');
-            $(this).next('div').slideDown(300);
-            $('.showInfo').not($(this)).animate({
-                marginTop:0
-            });
-            $(this).animate({
-                marginTop:$(this).width()
-            }, 300);
-            $(this).next('div').slideDown(300);
-            $(this).next('div').children('h3').animate({
-                marginTop:-5
-            }, 300);
-
-            e.preventDefault();
-
-        });
-
-        $('.closeInfo').click(function(e){
-
-            $(this).parent().slideUp('normal');
-            $(this).parent().children('h3').animate({
-                marginTop:-400
-            }, 200, function() {
-                $(this).parent().css('display', 'none');
-            });
-            $(this).parent().parent().find('img').animate({
-                marginTop:0
-            });
-
-            e.preventDefault();
-
-        });
-
-    }
+//    if($("div#makeMeScrollable").length){
+//        $("div#makeMeScrollable").smoothDivScroll({
+//
+//            touchScrolling:true,
+//            mousewheelScrolling: "vertical"
+//        });
+//
+//
+//        $('.showInfo').click(function(e){
+//
+//            $('.pInfo').find('h3').css('margin-top' , '-400px');
+//            $('.pInfo').css('display', 'none');
+//            $(this).next('div').slideDown(300);
+//            $('.showInfo').not($(this)).animate({
+//                marginTop:0
+//            });
+//            $(this).animate({
+//                marginTop:$(this).width()
+//            }, 300);
+//            $(this).next('div').slideDown(300);
+//            $(this).next('div').children('h3').animate({
+//                marginTop:-5
+//            }, 300);
+//
+//            e.preventDefault();
+//
+//        });
+//
+//        $('.closeInfo').click(function(e){
+//
+//            $(this).parent().slideUp('normal');
+//            $(this).parent().children('h3').animate({
+//                marginTop:-400
+//            }, 200, function() {
+//                $(this).parent().css('display', 'none');
+//            });
+//            $(this).parent().parent().find('img').animate({
+//                marginTop:0
+//            });
+//
+//            e.preventDefault();
+//
+//        });
+//
+//    }
 
     /*
     |--------------------------------------------------------------------------
     | FLEXSLIDER
     |--------------------------------------------------------------------------
      */
-    if($('.flexslider').length){
-        $('.flexslider').flexslider({
-            animation: "slide",
-            controlNav: true,
-            directionNav: true,
-            slideshow: true,
-            start: function(slider){
-
-                setTimeout("animateTxt("+slider.currentSlide+", 'off')", 300);
-            },
-            before: function(slider){
-
-                animateTxt(slider.currentSlide, 'on');
-
-            },
-            after: function(slider){
-                setTimeout("animateTxt("+slider.currentSlide+", 'off')", 300);
-
-            }
-
-        });
-
-
-        /* SILDER OVERLAY ON RESIZE */
-        $(window).resize(function() {
-            $('.tramOverlay').height($('.slides li img').height());
-        });
-
-    }
+//    if($('.flexslider').length){
+//        $('.flexslider').flexslider({
+//            animation: "slide",
+//            controlNav: true,
+//            directionNav: true,
+//            slideshow: true,
+//            start: function(slider){
+//
+//                setTimeout("animateTxt("+slider.currentSlide+", 'off')", 300);
+//            },
+//            before: function(slider){
+//
+//                animateTxt(slider.currentSlide, 'on');
+//
+//            },
+//            after: function(slider){
+//                setTimeout("animateTxt("+slider.currentSlide+", 'off')", 300);
+//
+//            }
+//
+//        });
+//
+//
+//        /* SILDER OVERLAY ON RESIZE */
+//        $(window).resize(function() {
+//            $('.tramOverlay').height($('.slides li img').height());
+//        });
+//
+//    }
 
 
 
@@ -426,25 +426,25 @@ $(document).ready(function() {
     | CAMERA SLIDER
     |--------------------------------------------------------------------------
      */
-    if($('.camera_wrap').length){
-
-        jQuery('.camera_wrap').camera({
-            thumbnails: true,
-            pagination: true,
-            height:'35%'
-        });
-
-    }
-
-    if($('.camera_wrap_nonav').length){
-
-        jQuery('.camera_wrap_nonav').camera({
-            pagination: false,
-            thumbnails: true,
-            height:'70%'
-        });
-
-    }
+//    if($('.camera_wrap').length){
+//
+//        jQuery('.camera_wrap').camera({
+//            thumbnails: true,
+//            pagination: true,
+//            height:'35%'
+//        });
+//
+//    }
+//
+//    if($('.camera_wrap_nonav').length){
+//
+//        jQuery('.camera_wrap_nonav').camera({
+//            pagination: false,
+//            thumbnails: true,
+//            height:'70%'
+//        });
+//
+//    }
 
 //END DOCUMENT READY
 });
@@ -495,7 +495,6 @@ $(window).load(function() {
                 stopAfterLoops:-1,// Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
 
 
-
                 fullWidth:"off",
 
                 shadow:0, //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
@@ -510,93 +509,90 @@ $(window).load(function() {
 
     }
 
-
-
     /*
     |--------------------------------------------------------------------------
     | ISOTOPE USAGE FILTERING
     |--------------------------------------------------------------------------
      */
-    if($('.isotopeWrapper').length){
-
-        var $container = $('.isotopeWrapper');
-        var $resize = $('.isotopeWrapper').attr('id');
-        // initialize isotope
-
-        $container.isotope({
-            itemSelector: '.isotopeItem',
-            resizable: false, // disable normal resizing
-            masonry: {
-                columnWidth: $container.width() / $resize
-            }
-
-
-
-        });
-
-        $('#filter a').click(function(){
-            $('#filter a').removeClass('current');
-            $(this).addClass('current');
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
-                filter: selector
-            });
-            return false;
-        });
-
-
-        $(window).smartresize(function(){
-            $container.isotope({
-                // update columnWidth to a percentage of container width
-                masonry: {
-                    columnWidth: $container.width() / $resize
-                }
-            });
-        });
-
-        $container.delegate('.masoneryBloc a.sizer', 'click', function(){
-            var $this = $(this);
-            var resizeElement = $(this).parent();
-
-            if(resizeElement.hasClass('span3')){
-
-                resizeElement.removeClass('span3');
-                resizeElement.addClass('span6');
-                $this.find('div>span>i').attr('class', 'icon-minus');
-
-            }else{
-
-                resizeElement.addClass('span3');
-                resizeElement.removeClass('span6');
-                $this.find('div>span>i').attr('class', 'icon-plus');
-
-            }
-
-
-
-
-            if($(this).parent().children('.hiddenInfo').css('display') == 'block'){
-
-                $(this).parent().children('.hiddenInfo').css('display', 'none');
-                $(this).parent().find('.iconZoom').css('background-position', '217px 702px');
-                $(this).parent().find('.mask span').html('Read More');
-
-            }else{
-
-                $(this).parent().children('.hiddenInfo').css('display', 'block');
-                $(this).parent().find('.iconZoom').css('background-position', '164px 689px');
-                $(this).parent().find('.mask span').html('Minimize');
-
-            }
-
-            $container.isotope('reLayout');
-            return false;
-        });
-    }
+//    if($('.isotopeWrapper').length){
+//
+//        var $container = $('.isotopeWrapper');
+//        var $resize = $('.isotopeWrapper').attr('id');
+//        // initialize isotope
+//
+//        $container.isotope({
+//            itemSelector: '.isotopeItem',
+//            resizable: false, // disable normal resizing
+//            masonry: {
+//                columnWidth: $container.width() / $resize
+//            }
+//
+//
+//
+//        });
+//
+//        $('#filter a').click(function(){
+//            $('#filter a').removeClass('current');
+//            $(this).addClass('current');
+//            var selector = $(this).attr('data-filter');
+//            $container.isotope({
+//                filter: selector
+//            });
+//            return false;
+//        });
+//
+//
+//        $(window).smartresize(function(){
+//            $container.isotope({
+//                // update columnWidth to a percentage of container width
+//                masonry: {
+//                    columnWidth: $container.width() / $resize
+//                }
+//            });
+//        });
+//
+//        $container.delegate('.masoneryBloc a.sizer', 'click', function(){
+//            var $this = $(this);
+//            var resizeElement = $(this).parent();
+//
+//            if(resizeElement.hasClass('span3')){
+//
+//                resizeElement.removeClass('span3');
+//                resizeElement.addClass('span6');
+//                $this.find('div>span>i').attr('class', 'icon-minus');
+//
+//            }else{
+//
+//                resizeElement.addClass('span3');
+//                resizeElement.removeClass('span6');
+//                $this.find('div>span>i').attr('class', 'icon-plus');
+//
+//            }
+//
+//
+//
+//
+//            if($(this).parent().children('.hiddenInfo').css('display') == 'block'){
+//
+//                $(this).parent().children('.hiddenInfo').css('display', 'none');
+//                $(this).parent().find('.iconZoom').css('background-position', '217px 702px');
+//                $(this).parent().find('.mask span').html('Read More');
+//
+//            }else{
+//
+//                $(this).parent().children('.hiddenInfo').css('display', 'block');
+//                $(this).parent().find('.iconZoom').css('background-position', '164px 689px');
+//                $(this).parent().find('.mask span').html('Minimize');
+//
+//            }
+//
+//            $container.isotope('reLayout');
+//            return false;
+//        });
+//    }
 
 //END WINDOW LOAD
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -607,56 +603,56 @@ $(window).load(function() {
 
 
 /* FLEXSLIDER INNER INFO CUSTOM ANIMATION */
-function animateTxt(curSlide, state){
-
-
-    if(state == 'off'){
-
-        //change the display state
-        $('.slideN'+curSlide).children('.txt').css('display', 'block');
-        $('.slideN'+curSlide).children('.txt').children('h2').css('display', 'block');
-        $('.slideN'+curSlide).children('.txt').children('div').css('display', 'block');
-        $('.slideN'+curSlide).children('.txt').children('a').css('display', 'inline-block');
-
-
-        //the animation
-        $('.slideN'+curSlide).children('.txt').children('h2').stop(true, true).animate({
-            marginLeft: 10
-        }, 400, 'easeOutQuad', function() {}).animate({
-            marginLeft: 0
-        }, 200, 'easeOutQuad', function() {});
-
-
-        $('.slideN'+curSlide).children('.txt').children('div').stop(true, true).delay(10).animate({
-            marginLeft:-10,
-            opacity:0.8
-        }, 300, 'easeOutQuad', function() {
-
-            }).animate({
-            marginLeft: 0,
-            opacity:1
-        }, 200, 'easeOutQuad', function() {});
-
-        $('.slideN'+curSlide).children('.txt').children('a').stop(true, true).delay(40).animate({
-            marginTop: -10
-        }, 300, 'easeOutQuad', function() {}).animate({
-            marginTop: 0
-        }, 200, 'easeOutQuad', function() {});
-    }else{
-
-
-        //change the display state
-        $('.slideN'+curSlide).children('.txt').children('h2').css('display', 'none');
-        $('.slideN'+curSlide).children('.txt').children('div').css('display', 'none');
-        $('.slideN'+curSlide).children('.txt').children('a').css('display', 'none');
-
-        //reposition the elements
-        $('.slideN'+curSlide).children('.txt').children('h2').css('margin-left', '-3000px');
-        $('.slideN'+curSlide).children('.txt').children('div').css('margin-left', '490px');
-        $('.slideN'+curSlide).children('.txt').children('a').css('margin-top', '230px');
-
-    }
-}
+//function animateTxt(curSlide, state){
+//
+//
+//    if(state == 'off'){
+//
+//        //change the display state
+//        $('.slideN'+curSlide).children('.txt').css('display', 'block');
+//        $('.slideN'+curSlide).children('.txt').children('h2').css('display', 'block');
+//        $('.slideN'+curSlide).children('.txt').children('div').css('display', 'block');
+//        $('.slideN'+curSlide).children('.txt').children('a').css('display', 'inline-block');
+//
+//
+//        //the animation
+//        $('.slideN'+curSlide).children('.txt').children('h2').stop(true, true).animate({
+//            marginLeft: 10
+//        }, 400, 'easeOutQuad', function() {}).animate({
+//            marginLeft: 0
+//        }, 200, 'easeOutQuad', function() {});
+//
+//
+//        $('.slideN'+curSlide).children('.txt').children('div').stop(true, true).delay(10).animate({
+//            marginLeft:-10,
+//            opacity:0.8
+//        }, 300, 'easeOutQuad', function() {
+//
+//            }).animate({
+//            marginLeft: 0,
+//            opacity:1
+//        }, 200, 'easeOutQuad', function() {});
+//
+//        $('.slideN'+curSlide).children('.txt').children('a').stop(true, true).delay(40).animate({
+//            marginTop: -10
+//        }, 300, 'easeOutQuad', function() {}).animate({
+//            marginTop: 0
+//        }, 200, 'easeOutQuad', function() {});
+//    }else{
+//
+//
+//        //change the display state
+//        $('.slideN'+curSlide).children('.txt').children('h2').css('display', 'none');
+//        $('.slideN'+curSlide).children('.txt').children('div').css('display', 'none');
+//        $('.slideN'+curSlide).children('.txt').children('a').css('display', 'none');
+//
+//        //reposition the elements
+//        $('.slideN'+curSlide).children('.txt').children('h2').css('margin-left', '-3000px');
+//        $('.slideN'+curSlide).children('.txt').children('div').css('margin-left', '490px');
+//        $('.slideN'+curSlide).children('.txt').children('a').css('margin-top', '230px');
+//
+//    }
+//}
 
 
 
@@ -729,7 +725,6 @@ function animateTxt(curSlide, state){
 
     });
 
-
     // ul to select
     var optionsList = '<option value="" selected>Navigate...</option>';
     $mainMenu.find('li').each(function() {
@@ -753,7 +748,6 @@ function animateTxt(curSlide, state){
     });
 
 })();
-
 
 /* BACK TO TOP (BTN back to top by Matt Varone)*/
 (function() {
@@ -785,7 +779,6 @@ function animateTxt(curSlide, state){
     })
     //.prepend('<span class="'+settings.containerHoverID+'"></span>')
     .hover(function() {
-
         $(containerHoverIDHash, this).stop().animate({
             'opacity': 1
         }, 600, 'linear');
@@ -813,7 +806,6 @@ function animateTxt(curSlide, state){
 
 })();
 
-
 /*
 |--------------------------------------------------------------------------
 | SIDEBAR MENU FOLLOWING WINDOW SCROLL
@@ -834,29 +826,29 @@ function scrollTo($position, $animationTime){
 |--------------------------------------------------------------------------
  */
 
-$(function() {
-    $window  = $(window);
-    if( $(".PortfolioStickyMenu").length && $window.width() >= 754) {
-        var $sidebar   = $(".PortfolioStickyMenu"),
-
-        offset     = $sidebar.offset(),
-        topPadding = 108;
-
-
-        $window.scroll(function() {
-            if ($window.scrollTop() > offset.top) {
-                $sidebar.stop().animate({
-                    marginTop: $window.scrollTop() - offset.top + topPadding
-                });
-            } else {
-                $sidebar.stop().animate({
-                    marginTop: 0
-                });
-            }
-        });
-    }
-
-});
+//$(function() {
+//    $window  = $(window);
+//    if( $(".PortfolioStickyMenu").length && $window.width() >= 754) {
+//        var $sidebar   = $(".PortfolioStickyMenu"),
+//
+//        offset     = $sidebar.offset(),
+//        topPadding = 108;
+//
+//
+//        $window.scroll(function() {
+//            if ($window.scrollTop() > offset.top) {
+//                $sidebar.stop().animate({
+//                    marginTop: $window.scrollTop() - offset.top + topPadding
+//                });
+//            } else {
+//                $sidebar.stop().animate({
+//                    marginTop: 0
+//                });
+//            }
+//        });
+//    }
+//
+//});
 
 
 /*
@@ -865,64 +857,62 @@ $(function() {
 |--------------------------------------------------------------------------
  */
 
-function appendBootstrap() {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
-    document.body.appendChild(script);
-}
+//function appendBootstrap() {
+//    var script = document.createElement("script");
+//    script.type = "text/javascript";
+//    script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
+//    document.body.appendChild(script);
+//}
 
 
-function initialize( id ) {
-
-    var geocoder;
-    var map ;
-    var myLatlng;
-    var address = '4 Pennsylvania Plaza, New York, NY';
-    var PlaceName = 'Madison Square Garden';
-    var myOptions = {
-        zoom: parseInt(14),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false
-    }
-
-    id = (id == undefined) ? 'mapWrapper' : id;
-
-    map = new google.maps.Map(document.getElementById(id), myOptions);
-
-    geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode( {
-        'address': address
-    }, function(results, status) {
-
-
-        myLatlng = results[0].geometry.location;
-
-        map.setCenter(myLatlng);
-
-
-        var contentString = '<div class="contentMap">'+PlaceName+'<br/>'+address+'</div>';
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Locate Us'
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,this);
-        });
-
-
-
-    });
-
-}
-
-
+//function initialize( id ) {
+//
+//    var geocoder;
+//    var map ;
+//    var myLatlng;
+//    var address = '4 Pennsylvania Plaza, New York, NY';
+//    var PlaceName = 'Madison Square Garden';
+//    var myOptions = {
+//        zoom: parseInt(14),
+//        mapTypeId: google.maps.MapTypeId.ROADMAP,
+//        scrollwheel: false
+//    }
+//
+//    id = (id == undefined) ? 'mapWrapper' : id;
+//
+//    map = new google.maps.Map(document.getElementById(id), myOptions);
+//
+//    geocoder = new google.maps.Geocoder();
+//
+//    geocoder.geocode( {
+//        'address': address
+//    }, function(results, status) {
+//
+//
+//        myLatlng = results[0].geometry.location;
+//
+//        map.setCenter(myLatlng);
+//
+//
+//        var contentString = '<div class="contentMap">'+PlaceName+'<br/>'+address+'</div>';
+//
+//        var marker = new google.maps.Marker({
+//            position: myLatlng,
+//            map: map,
+//            title: 'Locate Us'
+//        });
+//
+//        var infowindow = new google.maps.InfoWindow({
+//            content: contentString
+//        });
+//
+//
+//        google.maps.event.addListener(marker, 'click', function() {
+//            infowindow.open(map,this);
+//        });
+//
+//
+//
+//    });
+//
+//}
