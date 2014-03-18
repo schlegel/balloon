@@ -1,9 +1,11 @@
-**balloon** - Consuming Linked Data
+![](http://schlegel.github.io/balloon/images/balloon_logo_big.png)
 =======
 A tool-suite for Linked Data consumption. **balloon** aims in offering public services and tools to take advantage of the semantic web with less effort.
 The basic motivation is to establish a foundation for Linked Data as a Service (**LDaaS**). 
 
 **!!! The project is currently under development and will be available soon !!!**
+
+More detailed information available online:  [http://schlegel.github.io/balloon](http://schlegel.github.io/balloon)
 
 #Features
 - **balloon Overflight**
@@ -13,7 +15,7 @@ The basic motivation is to establish a foundation for Linked Data as a Service (
 - **balloon Fusion** 
 	- SPARQL query federation service based on equivalence resources
 	- Automatic endpoint discovery
-- **balloon Synopsis**
+- **balloon Synopsis** ([moved to a seperate github repository](https://github.com/schlegel/balloon-synopsis))
 	- HTML/JavaScript RDF Viewer & Browser
 	- jQuery Plugin 
 	-	Automatic information enhancement
