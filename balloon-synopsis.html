@@ -117,7 +117,7 @@
 text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" class="iconBtn"><i class="icon-github"></i>GitHub!</a></p>
                                 <h2>Demonstration</h2>
                                 <div class="divider"><span></span></div>  
-                                <p>This demonstration queries the endpoint (containing dumps from dbpedia) for cities in Germany. After the result is visualized, you can browse the entities by clicking on them. The endpoint will be automatically queried for more information. Keep in mind, that the current endpoint can have a long latency (about 1 second for each query). The current prototype allows sorting, filtering and searching for predicates.</p>
+                                <p>This demonstration queries dbpedia for cities in Germany. After the result is visualized, you can browse the entities by clicking on them. The endpoint will be automatically queried for more information. Keep in mind, that the current endpoint can have a long latency (about 1 second for each query). The current prototype allows sorting, filtering and searching for predicates.</p>
                                 <p><strong>Click on "Insert remote data" to start the demo.</strong></p>
                                 <div class="visaRDF">
                                 </div>
@@ -127,12 +127,12 @@ text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" clas
                                      <p>
                                         <label for="queryinputbox">Remote data query:</label>
                                         <textarea type="text" name="queryinputbox">SELECT ?subject ?predicate ?object { 
+    VALUES ?subject { <http://dbpedia.org/resource/Berlin> <http://dbpedia.org/resource/Passau> <http://dbpedia.org/resource/Munich> <http://dbpedia.org/resource/Frankfurt>     }
     VALUES ?predicate { rdfs:label }                                        
     ?subject ?predicate ?object. 
-    ?subject a <http://dbpedia.org/ontology/Place>.
-    ?subject <http://dbpedia.org/ontology/country> <http://dbpedia.org/resource/Germany>.
     FILTER (lang(?object) = 'en')
 } LIMIT 150
+                                        
                                         </textarea>
                                     </p>
                                     <p>
