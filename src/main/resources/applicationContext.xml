@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:neo4j="http://www.springframework.org/schema/data/neo4j"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/neo4j http://www.springframework.org/schema/data/neo4j/spring-neo4j-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="org.balloon_project" />
+
+    <!--################################################-->
+    <!-- project beans -->
+    <!--################################################-->
+
+
+    <bean id="initListener" class="org.balloon_project.InitListener" lazy-init="false" init-method="contextInitialized" destroy-method="contextDestroyed"/>
+
+    <bean id="indexing" class="org.balloon_project.overflight.task.indexing.Indexing" destroy-method="waitUntilFinished">
+        <lookup-method name="createIndexingTask" bean="indexingTask" />
+    </bean>
+    <bean id="indexingTask" class="org.balloon_project.overflight.task.indexing.IndexingTask" scope="prototype"/>
+    <bean id="indexingThreadPool" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool">
+        <constructor-arg value="60"/>
+    </bean>
+
+    <bean id="importerFileListener" class="org.balloon_project.overflight.task.importer.ImporterFileListener" init-method="start" lazy-init="false" />
+    <bean id="importer" class="org.balloon_project.overflight.task.importer.Importer" destroy-method="waitUntilFinished">
+        <lookup-method name="createImporterTask" bean="importerTask" />
+    </bean>
+    <bean id="importerTask" class="org.balloon_project.overflight.task.importer.ImporterTask" scope="prototype"/>
+    <bean id="importerThreadPool" class="java.util.concurrent.Executors" factory-method="newSingleThreadExecutor" />
+
+
+    <!--################################################-->
+    <!-- neo4j Configuration -->
+    <!--################################################-->
+    <neo4j:repositories base-package="org.balloon_project" />
+    <neo4j:config graphDatabaseService="graphDatabaseService" id="neo4jConfig" base-package="org.balloon_project.overflight.model"/>
+    <tx:annotation-driven mode="proxy"/>
+    <tx:advice id="transactionInterceptor">
+        <tx:attributes>
+            <tx:method name="*" isolation="REPEATABLE_READ"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <bean id="graphDataBaseFactory" class="org.neo4j.graphdb.factory.GraphDatabaseFactory"/>
+    <bean id="graphDataBaseBuilder" factory-bean="graphDataBaseFactory" factory-method="newEmbeddedDatabaseBuilder">
+        <constructor-arg value="${database.neo4j.storedirectory}"/>
+    </bean>
+    <bean id="graphDataBaseBuilder.configuration" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="graphDataBaseBuilder"/>
+        <property name="targetMethod" value="setConfig"/>
+        <property name="arguments">
+            <map>
+                <entry key="remote_shell_enabled" value="true"/>
+                <entry key="dump_configuration" value="true"/>
+                <entry key="intercept_deserialized_transactions" value="true"/>
+                <entry key="intercept_committing_transactions" value="true"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="graphDatabaseService" factory-bean="graphDataBaseBuilder" factory-method="newGraphDatabase" depends-on="graphDataBaseBuilder.configuration" destroy-method="shutdown"/>
+
+    <!--neo4j web console-->
+    <bean id="serverWrapper" class="org.neo4j.server.WrappingNeoServer" init-method="start" destroy-method="stop">
+        <constructor-arg ref="graphDatabaseService" />
+        <constructor-arg ref="config"/>
+    </bean>
+    <bean id="config" class="org.balloon_project.Neo4JSettings">
+        <constructor-arg ref="graphDatabaseService" />
+        <constructor-arg>
+            <map>
+                <entry key="org.neo4j.server.webserver.address" value="0.0.0.0"/>
+                <entry key="org.neo4j.server.webserver.port" value="7474"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <!-- Use this post processor to translate any Exceptions thrown in @Repository annotated classes -->
+    <!--<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>-->
+</beans>
