@@ -54,8 +54,8 @@
         <force.upgrade>true</force.upgrade>
         <spring.version>3.2.7.RELEASE</spring.version>
         <spring.security.version>3.2.0.RELEASE</spring.security.version>
-        <spring.data.neo4j.version>3.0.1.RELEASE</spring.data.neo4j.version>
-        <neo4j.version>2.0.2</neo4j.version>
+        <spring.data.neo4j.version>3.2.0.BUILD-SNAPSHOT</spring.data.neo4j.version>
+        <neo4j.version>2.1.2</neo4j.version>
         <jena.arq.version>2.11.0</jena.arq.version>
     </properties>
 
@@ -227,7 +227,6 @@
             <artifactId>neo4j-server</artifactId>
             <classifier>static-web</classifier>
             <version>${neo4j.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
