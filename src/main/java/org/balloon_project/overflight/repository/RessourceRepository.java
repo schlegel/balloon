@@ -54,12 +54,15 @@ public interface RessourceRepository extends GraphRepository<Ressource>{
             "OPTIONAL MATCH (t)-[r2:INHERITANCE*]->(ta)" +
             "RETURN collect(t)+collect(ta)")
     public Iterable<Ressource> findTypes(@Param("url")String url);
+    // TODO equal beziehungen fehlen
 
     @Query("MATCH (x),(x2) " +
             "WHERE x.url = {url1} AND x2.url = {url2} " +
             "MATCH (x)-[:INSTANCE|INHERITANCE*]->(t)<-[:INSTANCE|INHERITANCE*]-(x2)" +
             "RETURN t")
     public Iterable<Ressource> commonTypes(@Param("url1") String url, @Param("url2") String url2);
+    // TODO equal beziehungen fehlen
+
 
     @Query(value =  "MERGE (subject:RESSOURCE:`__TYPE__RESSOURCE` {url: '{subject}'}) " +
                     "MERGE (object:RESSOURCE:`__TYPE__RESSOURCE` {url: '{object}'}) " +

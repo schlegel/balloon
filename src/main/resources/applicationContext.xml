@@ -12,8 +12,6 @@
     <!--################################################-->
     <!-- project beans -->
     <!--################################################-->
-
-
     <bean id="initListener" class="org.balloon_project.InitListener" lazy-init="false" init-method="contextInitialized" destroy-method="contextDestroyed"/>
 
     <bean id="indexing" class="org.balloon_project.overflight.task.indexing.Indexing" destroy-method="waitUntilFinished">
@@ -35,46 +33,11 @@
     <!--################################################-->
     <!-- neo4j Configuration -->
     <!--################################################-->
-    <neo4j:repositories base-package="org.balloon_project" />
-    <neo4j:config graphDatabaseService="graphDatabaseService" id="neo4jConfig" base-package="org.balloon_project.overflight.model"/>
     <tx:annotation-driven mode="proxy"/>
-    <tx:advice id="transactionInterceptor">
-        <tx:attributes>
-            <tx:method name="*" isolation="REPEATABLE_READ"/>
-        </tx:attributes>
-    </tx:advice>
-
-    <bean id="graphDataBaseFactory" class="org.neo4j.graphdb.factory.GraphDatabaseFactory"/>
-    <bean id="graphDataBaseBuilder" factory-bean="graphDataBaseFactory" factory-method="newEmbeddedDatabaseBuilder">
-        <constructor-arg value="${database.neo4j.storedirectory}"/>
-    </bean>
-    <bean id="graphDataBaseBuilder.configuration" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetObject" ref="graphDataBaseBuilder"/>
-        <property name="targetMethod" value="setConfig"/>
-        <property name="arguments">
-            <map>
-                <entry key="remote_shell_enabled" value="true"/>
-                <entry key="dump_configuration" value="true"/>
-                <entry key="intercept_deserialized_transactions" value="true"/>
-                <entry key="intercept_committing_transactions" value="true"/>
-            </map>
-        </property>
-    </bean>
-    <bean id="graphDatabaseService" factory-bean="graphDataBaseBuilder" factory-method="newGraphDatabase" depends-on="graphDataBaseBuilder.configuration" destroy-method="shutdown"/>
-
-    <!--neo4j web console-->
-    <bean id="serverWrapper" class="org.neo4j.server.WrappingNeoServer" init-method="start" destroy-method="stop">
-        <constructor-arg ref="graphDatabaseService" />
-        <constructor-arg ref="config"/>
-    </bean>
-    <bean id="config" class="org.balloon_project.Neo4JSettings">
-        <constructor-arg ref="graphDatabaseService" />
-        <constructor-arg>
-            <map>
-                <entry key="org.neo4j.server.webserver.address" value="0.0.0.0"/>
-                <entry key="org.neo4j.server.webserver.port" value="7474"/>
-            </map>
-        </constructor-arg>
+    <neo4j:repositories base-package="org.balloon_project.overflight.repository" />
+    <neo4j:config graphDatabaseService="graphDatabaseService" id="neo4jConfig" base-package="org.balloon_project.overflight.model"/>
+    <bean id="graphDatabaseService" class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase">
+        <constructor-arg index="0" value="http://localhost:7474/db/data" />
     </bean>
 
     <!-- Use this post processor to translate any Exceptions thrown in @Repository annotated classes -->
