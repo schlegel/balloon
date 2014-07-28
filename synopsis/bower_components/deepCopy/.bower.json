@@ -1,0 +1,12 @@
+{
+  "name": "deepCopy",
+  "_cacheHeaders": {
+    "Last-Modified": "Tue, 13 Dec 2011 01:02:52 GMT",
+    "Content-Length": "10806",
+    "Content-Type": "application/javascript"
+  },
+  "main": "index.js",
+  "_source": "http://oranlooney.com/static/javascript/deepCopy.js",
+  "_target": "*",
+  "_originalSource": "http://oranlooney.com/static/javascript/deepCopy.js"
+}

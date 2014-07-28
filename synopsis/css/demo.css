@@ -1,0 +1,85 @@
+/**** Base styles ****/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+	{
+	display: block;
+}
+
+body {
+	padding: 20px;
+	font-family:  'Lato', sans-serif;
+	background: #fbfbfb;
+	color: #FFF;
+	overflow: auto;
+
+}
+
+h1,h2,h3,p,ul,ol,pre,dl {
+	margin-bottom: 1.0em;
+}
+
+h1,h2,#super-list,.item,.tagline,#index-list,.super-list .link {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1,h2,h3 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 32px;
+	line-height: 1.1em;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 1.1em;
+}
+
+ul,ol {
+	margin-left: 1.5em;
+}
+
+a,a code {
+	color: #FB4;
+	text-decoration: none;
+}
+
+a:hover,a:hover code {
+	color: #4BF;
+}
+
+a:active,a:active code {
+	color: #1FB;
+	background: black;
+}
+
+a img {
+	border: none;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+blockquote {
+	border-left: 1px solid #333;
+	font-style: italic;
+}
+
+label {
+	color: 		#222;
+}

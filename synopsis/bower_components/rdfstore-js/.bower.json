@@ -1,0 +1,13 @@
+{
+  "name": "rdfstore-js",
+  "_cacheHeaders": {
+    "ETag": "\"a0bd4fccd6a152062548af7fb7c7b4dfd95fe651\"",
+    "Content-Length": "298882",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:a0bd4fccd",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/antoniogarrote/rdfstore-js/master/dist/browser/rdf_store_min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/antoniogarrote/rdfstore-js/master/dist/browser/rdf_store_min.js"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "handlebars.js",
+  "_cacheHeaders": {
+    "ETag": "\"d7a58c286b230beb275041d8718e6d64\"",
+    "Last-Modified": "Thu, 02 Jan 2014 04:59:31 GMT",
+    "Content-Length": "89667",
+    "Content-Type": "binary/octet-stream"
+  },
+  "_release": "e-tag:d7a58c286",
+  "main": "index.js",
+  "_source": "http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js",
+  "_target": "*",
+  "_originalSource": "http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"
+}

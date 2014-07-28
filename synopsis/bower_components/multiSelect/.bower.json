@@ -1,0 +1,14 @@
+{
+  "name": "multiSelect",
+  "_cacheHeaders": {
+    "ETag": "\"478//trunk/job/webapp/js/plugin/multiselect/jquery.multiSelect.js\"",
+    "Last-Modified": "Tue, 16 Mar 2010 12:09:22 GMT",
+    "Content-Length": "21385",
+    "Content-Type": "text/plain"
+  },
+  "_release": "e-tag:478//trun",
+  "main": "index.js",
+  "_source": "http://ytjobwebsite.googlecode.com/svn-history/r478/trunk/job/webapp/js/plugin/multiselect/jquery.multiSelect.js",
+  "_target": "*",
+  "_originalSource": "http://ytjobwebsite.googlecode.com/svn-history/r478/trunk/job/webapp/js/plugin/multiselect/jquery.multiSelect.js"
+}

@@ -33,8 +33,10 @@
         <link type="text/css" rel="stylesheet" href="css/layout.css">
         <link type="text/css" id="colors" rel="stylesheet" href="css/colors.css">
         
-        <!-- visaRDF -->
-        <link rel="stylesheet" href="synopsis/css/visaRdf.css" type="text/css" />
+        <!-- ballon Synopsis -->
+        <link rel="stylesheet" href="synopsis/bower_components/magnific-popup/dist/magnific-popup.css" />
+        <link rel="stylesheet" href="synopsis/css/bSynopsis.css" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 
         <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <!--[if gte IE 9]><style type="text/css">.iconBig, .active, .hover a , .Shover a { filter: none !important; } </style> <![endif]-->
@@ -99,6 +101,7 @@
                                     <li><i class="icon-eye"></i> jQuery Plugin</li>
                                     <li><i class="icon-eye"></i> Automatic information enhancement (intergration of <a href="balloon-fusion.html">balloon Fusion</a>)</li>
                                     <li><i class="icon-eye"></i> Configurable Templating (aggregate information for human-friendly view e.g. Google Maps instead of long/lat)</li>
+                                    <li><i class="icon-eye"></i> Semantic Colors based on rdf:type information (similar entities have similar colors)</li>
                                     <li><i class="icon-eye"></i> Timeline (track history of the browsing behaviour)</li>
                                 </ul>
                                 <div class="row"> 
@@ -149,28 +152,14 @@ text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" clas
                             
                                 <h2>Demonstration</h2>
                                 <div class="divider"><span></span></div>  
-                                <p>This demonstration queries dbpedia for cities in Germany. After the result is visualized, you can browse the entities by clicking on them. The endpoint will be automatically queried for more information. Keep in mind, that the current endpoint can have a long latency (about 1 second for each query). The current prototype allows sorting, filtering and searching for predicates.</p>
-                                <p><strong>Click on "Insert remote data" to start the demo.</strong></p>
-                                <div class="visaRDF">
-                                </div>
-
-                                <form>
-                                     <label for="serviceinputbox">Remote data service:</label> <input type="text" name="serviceinputbox" value="http://dbpedia.org/sparql">
-                                     <p>
-                                        <label for="queryinputbox">Remote data query:</label>
-                                        <textarea type="text" name="queryinputbox">SELECT ?subject ?predicate ?object { 
-    VALUES ?subject { <http://dbpedia.org/resource/Berlin> <http://dbpedia.org/resource/Passau> <http://dbpedia.org/resource/Munich> <http://dbpedia.org/resource/Frankfurt>     }
-    VALUES ?predicate { rdfs:label }                                        
-    ?subject ?predicate ?object. 
-    FILTER (lang(?object) = 'en')
-} LIMIT 150
-                                        
-                                        </textarea>
-                                    </p>
-                                    <p>
-                                        <input class="btn" type="button" name="insertRemote" value="Insert remote data" onclick="$('.visaRDF').data('plugin_visaRDF').insertRemoteDataQuery(this.form.serviceinputbox.value, this.form.queryinputbox.value);">
-                                    </p>
-                                </form>
+                                <p>This demonstration shows balloon Synopsis in the direct overlay mode. You can click on the red terms to get more information about the entities. DBpedia is currently used to get more infomration about the entities. The current prototype allows sorting, filtering and searching for predicates.</p> 
+                              	<p id="text">
+		                          <span resource="http://dbpedia.org/resource/Passau" style="color:#e15d3a;cursor: pointer;">Passau</span> is a town in 
+                                  <span resource="http://dbpedia.org/resource/Lower_Bavaria" style="color:#e15d3a;cursor: pointer;">Lower Bavaria</span>, Germany. The distance to 
+                                  <span resource="http://dbpedia.org/resource/Munich" style="color:#e15d3a;cursor: pointer;">Munich</span> is about 145 km. It is also known as the Dreiflüssestadt or "City of Three Rivers," because the Danube is joined at Passau by the Inn from the south and the Ilz from the north. Passau's population is 50,415, of whom about 11,000 are students at the local 
+                                  <span resource="http://dbpedia.org/resource/University_of_Passau" style="color:#e15d3a;cursor: pointer;">University of Passau</span>. The university, founded in the late 1970s and it is renowned in Germany for its institutes of economics, law, theology, computer science and Cultural Studies.
+                                </p>
+	<div class="bSynopsis"></div>
                             </section>       
                     </div>
                         </div>
@@ -229,8 +218,48 @@ text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" clas
 
         </div>
 
-        <script type="text/javascript" src="js-plugin/respond/respond.min.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/jquery-1.8.3.js"></script>
+     
+        <!-- synopsis -->
+
+<script src="synopsis/bower_components/modernizr/modernizr.js"></script>
+<script src="synopsis/bower_components/jquery/dist/jquery.js"></script>
+<script src="synopsis/bower_components/handlebars.js/index.js"></script>
+<script src="synopsis/bower_components/rdfstore-js/index.js"></script>
+<script src="synopsis/bower_components/throttledresize/index.js"></script>
+<script src="synopsis/bower_components/rgbcolor/index.js"></script>
+<script src="synopsis/bower_components/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="synopsis/bower_components/get-style-property/get-style-property.js"></script>
+<script src="synopsis/bower_components/get-size/get-size.js"></script>
+<script src="synopsis/bower_components/matches-selector/matches-selector.js"></script>
+<script src="synopsis/bower_components/eventie/eventie.js"></script>
+<script src="synopsis/bower_components/doc-ready/doc-ready.js"></script>
+<script src="synopsis/bower_components/eventEmitter/EventEmitter.js"></script>
+<script src="synopsis/bower_components/jquery-bridget/jquery.bridget.js"></script>
+<script src="synopsis/bower_components/outlayer/item.js"></script>
+<script src="synopsis/bower_components/outlayer/outlayer.js"></script>
+<script src="synopsis/bower_components/masonry/masonry.js"></script>
+<script src="synopsis/bower_components/isotope/js/item.js"></script>
+<script src="synopsis/bower_components/isotope/js/layout-mode.js"></script>
+<script src="synopsis/bower_components/isotope/js/isotope.js"></script>
+<script src="synopsis/bower_components/isotope/js/layout-modes/vertical.js"></script>
+<script src="synopsis/bower_components/isotope/js/layout-modes/fit-rows.js"></script>
+<script src="synopsis/bower_components/isotope/js/layout-modes/masonry.js"></script>
+<script src="synopsis/bower_components/classie/classie.js"></script>
+<script src="synopsis/bower_components/packery/js/rect.js"></script>
+<script src="synopsis/bower_components/packery/js/packer.js"></script>
+<script src="synopsis/bower_components/packery/js/item.js"></script>
+<script src="synopsis/bower_components/packery/js/packery.js"></script>
+<script src="synopsis/bower_components/isotope-packery/packery-mode.js"></script>
+<script src="synopsis/bower_components/shufflejs/dist/jquery.shuffle.js"></script>
+<script src="synopsis/bower_components/js-md5/js/md5.js"></script>
+<script src="synopsis/bower_components/chroma-js/chroma.js"></script>
+<script src="synopsis/bower_components/multiSelect/index.js"></script>
+<script src="synopsis/bower_components/deepCopy/index.js"></script>
+<script type="text/javascript" src="synopsis/build/bSynopsis.js"></script>
+        <!-- Custom  -->
+        <script type="text/javascript" src="js/custom.js"></script>
+
+   <script type="text/javascript" src="js-plugin/respond/respond.min.js"></script>
         <script type="text/javascript" src="js-plugin/jquery-ui/jquery-ui-1.8.23.custom.min.js"></script>
         
         <!-- third party plugins  -->
@@ -242,70 +271,146 @@ text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" clas
         <!-- jQuery KenBurn Slider  -->
         <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
         <script type="text/javascript" src="js-plugin/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-        <!-- synopsis -->
-        <script type="text/javascript" src="synopsis/js/libs/handlebars-v1.1.2.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/deepCopy.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/jquery.quickfit.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/jquery.multiSelect.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/jquery.isotope.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/rdf_store.js"></script>
-        <script type="text/javascript" src="synopsis/js/libs/rgbcolor.js"></script>
-        <script type="text/javascript" src="synopsis/build/visaRDF.js"></script>
-
-        <!-- Custom  -->
-        <script type="text/javascript" src="js/custom.js"></script>
 
         <script type="text/javascript">
-            $(function() {
-                $('.visaRDF').visaRDF({
-                    nodeFilters: {
-                        blacklistURI: {
-                            config: new Array(".*someRegExp.*")
-                        },
-                        maps: {
-                            fn: function(plugin, nodes, config) {
-                                $.each(nodes, function(i, node) {
-                                    if(node.predicates && node.predicates[0].value === 'http://www.georss.org/georss/point') {
-                                        node.useTemplateIdentifier = 'maps';
-                                        node.lat = node.value.split(" ")[0];
-                                        node.long = node.value.split(" ")[1];
-                                        node.tileWidth = '410px';
-                                        node.tileHeight = '200px';
-                                        node.disableBrowsing = 'true';
-                                    }
-                                });
-                                return nodes;
-                            },
-                            template: '<div><iframe width="410" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll={{node.lat}},{{node.long}}&amp;spn=0.079502,0.145912&amp;z=12&amp;output=embed"></iframe></div>'
-                        },
+                                $(function() {
+                                    $('.bSynopsis').bSynopsis({
+                                        initLayer : {hide : true},
+                                    	  layerOptions : {
+                                           nodeFilters: {
+                                              cityChart : {
+                                                 fn : function(nodes, config) {
+                                                   var typeMap = {};
+                                                   $.each(nodes, function(i, node) {
+                                                     node.forEachComponentType("predicate", function(component) {
+                                                       var uri = component.data.value;
+                                                       if(uri.indexOf("http://dbpedia.org/property/") === 0) {
+                                                         var uriSplit = uri.substring(28);
+                                                         var chartType;
+                                                         var pre;
+                                                         var pos = 0;
+                                                         if(uriSplit) {
+                                                           pre = uriSplit.substring(0, 3);
+                                                           switch (pre) {
+                                                             case "jan" : pos = 1;
+                                                             break;
+                                                             case "feb" : pos = 2;
+                                                             break;
+                                                             case "mar" : pos = 3;
+                                                             break;
+                                                             case "apr" : pos = 4;
+                                                             break;
+                                                             case "may" : pos = 5;
+                                                             break;
+                                                             case "jun" : pos = 6;
+                                                             break;
+                                                             case "jul" : pos = 7;
+                                                             break;
+                                                             case "aug" : pos = 8;
+                                                             break;
+                                                             case "sep" : pos = 9;
+                                                             break;
+                                                             case "oct" : pos = 10;
+                                                             break;
+                                                             case "nov" : pos = 11;
+                                                             break;
+                                                             case "dec" : pos = 12;
+                                                           }
+                                                         }
+                                                         if(pos > 0) {
+                                                           chartType = uriSplit.substring(3);
+                                                           if(!typeMap[chartType]) {
+                                                             var chartNode = node;
+                                                             chartNode.id = chartNode.id + "cityChart";
+                                                             typeMap[chartType] = chartNode;
+                                                             chartNode.cityChartData = {};
+                                                             chartNode.cityChartData.type = chartType;
+                                                             chartNode.cityChartData[pos] = node.getFComponentOT("label").data.value;
+                                                             var data = chartNode.cityChartData;
+                                                             chartNode.getChartValues = function(){
+                                                               return function() {
+                                                                 var values = "";
+                                                                 for(var i = 1; i <= 12; i++) {
+                                                                   if(i > 1) {
+                                                                     values += ",";
+                                                                   }
+                                                                   values += data[i] ? data[i] : 0;
+                                                                 }
+                                                                 return values;
+                                                               };
+                                                               }(data);
+                                                             chartNode.getChartLabels = "jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec";
+                                                             chartNode.useTemplateID = 'cityChart';
+                                                                     if(!chartNode.style) {
+                                                                       chartNode.style = {};
+                                                                     }
+                                                             chartNode.style.width = '410px';
+                                                             chartNode.style.height = '200px';
+                                                             chartNode.layoutFn = function($tile, node, nStyle) {
+                                                                       $tile.height(nStyle.height);
+                                                                       $tile.width(nStyle.width);
+                                                                     }
+                                                             chartNode.dynLayoutFn = chartNode.layoutFn;
+                                                           } else {
+                                                             typeMap[chartType].cityChartData[pos] = node.getFComponentOT("label").data.value;
+                                                             delete nodes[i];
+                                                           }
+                                                         }
+                                                         
+                                                       }
+                                                     });
+                                                   });
+                                                   return nodes;
+                                                 },
+                                                  template: '<div><iframe width="410" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://chart.apis.google.com/chart?cht=bvs&chd=t:{{node.getChartValues}}&chds=a&chs=410x200&chl={{node.getChartLabels}}&chxt=y&chtt={{node.cityChartData.type}}"></iframe></div>'
+                                               },
+                                              maps: {
+                                                  fn: function(nodes, config) {
+                                                      $.each(nodes, function(i, node) {
+                                                          if(node.hasComponentType("predicate")) {
+                                                         	    node.forEachComponentType("predicate", function(component) {
+                                                              if(component.data.value  === 'http://www.georss.org/georss/point') {
+                                                                 node.useTemplateID = 'maps';
+                                                                 node.lat = node.getFComponentOT("label").data.value.split(" ")[0];
+                                                                 node.long = node.getFComponentOT("label").data.value.split(" ")[1]
+                                                                 if(!node.style) {
+                                                               	  node.style = {};
+                                                                 }
+                                                                 node.style.width = '410px';
+                                                                 node.style.height = '200px';
+                                                                 node.layoutFn = function($tile, node, nStyle) {
+                                                               	  $tile.height(nStyle.height);
+                                                               	  $tile.width(nStyle.width);
+                                                                 }
+                                                                 node.dynLayoutFn = node.layoutFn;
+                                                              }
+                                                         	  });
+                                                          }
+                                                       });
+                                                      return nodes;
+                                                  },
+                                                  template: '<div><iframe width="410" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;t=m&amp;ll={{node.lat}},{{node.long}}&amp;spn=0.079502,0.145912&amp;z=12&amp;output=embed"></iframe></div>'
+                                              },
 
-                    },
-                    tileFilters: {
-                        resizeFilter : {
-                            fn: function(plugin, tiles) {
-                                $.each(tiles, function(i, tile) {
-                                    tile = $(tile);
-                                    if(tile.data('node').tileWidth) {
-                                        tile.width(tile.data('node').tileWidth);
-                                    }
-
-                                    if(tile.data('node').tileHeight) {
-                                        tile.height(tile.data('node').tileHeight);
-                                    }
+                                          },
+                                          remoteOptions : {
+                                              remoteLimit: 1000
+                                          },
+                                          viewOptions : {
+                                          	layoutEngineOptions : {
+                                              clusterSize : 999999,
+                                              clusterWait : 0,
+                                          		useEngine : "isotope"
+                                          	}
+                                          }
+                                        }
+                                    });
+                                    
+                                    $("#text").find("span").click(function(e){
+                           	            $('.bSynopsis').data('plugin_bSynopsis').insertRemoteAndOpenViewByUri($(this).attr("resource"));
+                                    });
                                 });
-                                return tiles;
-                            }
-                        }
-                    },
-                    layerOptions : {
-                        remoteOptions : {
-                            remoteLimit: 1000,
-                            remoteBackend : ['http://dbpedia.org/sparql']
-                        }
-                    }
-                });
-            });
-            </script>
+                            </script>
             <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

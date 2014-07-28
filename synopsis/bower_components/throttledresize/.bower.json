@@ -1,0 +1,13 @@
+{
+  "name": "throttledresize",
+  "_cacheHeaders": {
+    "ETag": "\"4ba4a86b4071a41d955f96bc4c563a8bd462bdcb\"",
+    "Content-Length": "1262",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:4ba4a86b4",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/louisremi/jquery-smartresize/master/jquery.throttledresize.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/louisremi/jquery-smartresize/master/jquery.throttledresize.js"
+}
