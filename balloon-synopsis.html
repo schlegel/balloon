@@ -407,6 +407,7 @@ text-align: center;"><a href="https://github.com/schlegel/balloon-synopsis" clas
                                     });
                                     
                                     $("#text").find("span").click(function(e){
+                                        $('.synopsis_overlay').remove();
                            	            $('.bSynopsis').data('plugin_bSynopsis').insertRemoteAndOpenViewByUri($(this).attr("resource"));
                                     });
                                 });
